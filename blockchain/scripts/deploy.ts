@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import { ethers } from "hardhat";
 
 async function main() {
