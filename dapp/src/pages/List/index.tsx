@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 // import Book from "./Book";
-import { getLastTweets } from "../Services/Web3Service";
+// import { getLastTweets } from "../Services/Web3Service";
 import './styles.css';
 
 export default function List() {
@@ -9,8 +9,8 @@ export default function List() {
 
   async function loadBooks(page = 1) {
     try {
-        const results = await getLastTweets(page);
-
+        // const results = await getLastTweets(page);
+        const results = "";
         console.log(results);
         // if (page > 1) {
         //     books.push(...results);
@@ -21,12 +21,12 @@ export default function List() {
     }
     catch (err) {
         console.error(err);
-        alert(err.message);
+        // alert(err.message);
     }
 }
 
   useEffect(() => {
-    loadBooks();
+    // loadBooks();
 }, [])
 
 

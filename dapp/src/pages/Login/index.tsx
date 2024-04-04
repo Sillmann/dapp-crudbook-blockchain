@@ -9,7 +9,7 @@ export default function Login() {
   function onBtnLogin() {
     // alert("login");
     doLogin()
-      .then(result => navigate("/list") )
+      .then(result => navigate("/add") )
       // .then(result => alert(result) )
       .catch(err => {
         console.error(err);

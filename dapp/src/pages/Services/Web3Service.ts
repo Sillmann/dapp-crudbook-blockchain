@@ -42,10 +42,10 @@ function getContract() {
   return new web3.eth.Contract(ABI as AbiType, CONTRACT_ADDRESS, { from });
 }
 
-export async function getLastTweets(page) {
-  const contract = getContract();
-  const books = await contract.methods.getLastTweets(page).call();
-  // return books.map(b => { return { ...b } }).filter(b => b.title !== "");
-  return books?.map(b => { return { ...b } });
-}
+// export async function getLastTweets(page) {
+//   const contract = getContract();
+//   const books = await contract.methods.getLastTweets(page).call();
+//   // return books.map(b => { return { ...b } }).filter(b => b.title !== "");
+//   return books?.map(b => { return { ...b } });
+// }
 
