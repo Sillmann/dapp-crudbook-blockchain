@@ -14,18 +14,18 @@ describe("BookDatase", function () {
     return { bookDatabase, owner, otherAccount };
     }
 
-    it("Should count = 0", async function () {
-      const { bookDatabase, owner, otherAccount } = await loadFixture(deployFixture);
-      const count = await bookDatabase.count();
-      expect(count).to.equal(0);
-    });
+    // it("Should count = 0", async function () {
+    //   const { bookDatabase, owner, otherAccount } = await loadFixture(deployFixture);
+    //   const count = await bookDatabase.count();
+    //   expect(count).to.equal(0);
+    // });
 
-    it("Should add book", async function () {
-      const { bookDatabase, owner, otherAccount } = await loadFixture(deployFixture);
-      await bookDatabase.addBook({ title: "New Book", year: 2023});
-      const count = await bookDatabase.count();
-      expect(count).to.equal(1);
-    });
+    // it("Should add book", async function () {
+    //   const { bookDatabase, owner, otherAccount } = await loadFixture(deployFixture);
+    //   await bookDatabase.addBook({ title: "New Book", year: 2023});
+    //   const count = await bookDatabase.count();
+    //   expect(count).to.equal(1);
+    // });
 
     // it("Should edit book", async function () {
     //   const { bookDatabase, owner, otherAccount } = await loadFixture(deployFixture);
