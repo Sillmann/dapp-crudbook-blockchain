@@ -1,0 +1,123 @@
+------------------------
+blockchain-book-database
+------------------------
+1. Criar pasta do projeto, ex: dapp-book-database, md blockchain
+
+2. Na pasta criada, inicializar um projeto nodejs e cria o package.json 
+npm init -y
+
+3. Instalar o hardhat
+npm i -D hardhat
+
+4. Inicializar o hardhat
+npx hardhat init
+   - criar projeto em typescript;
+   - hardhat project root: <enter>
+   - add a .gitignore: Yes
+   - install a sample projets..: Yes
+   
+5. Ajustar dados do contrato/teste/deploy
+- em contract > Lock.sol ( alterar para BookDatabase.sol )   
+- em teste ( alterar para BookDatabase.test.ts )
+- em ignition > modules > Lock.ts ( alterar para deploy.ts )
+
+6. Compilar projeto no hardhat ( gera pasta artifacts e cache ) - abi do contrato
+npx hardhat compile  
+
+7. Para executar os testes do contrato:
+npx hardhat test
+
+8. Fazer o deploy do contrato
+npm i dotenv
+
+criar .env
+SECRET=ticket grief hire hundred deal ivory square brown chef chunk reward element
+SEP_URL=https://eth-sepolia.g.alchemy.com/v2/8CRRcM4ZoZrnZkgqBOAK-GjIVjoYvgZN
+API_KEY=DA14SBZEAJ9GZ5PYNS9E6ZUS3IHC49M87Y
+
+adaptar o hardhat.config.ts
+import dotenv from "dotenv";
+dotenv.config();
+
+import { HardhatUserConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-toolbox";
+
+const config: HardhatUserConfig = {
+  solidity: "0.8.24",
+  networks: {
+
+    sepolia: {
+      url: process.env.SEP_URL,
+      chainId: 11155111,
+      accounts: {
+        mnemonic: process.env.SECRET
+      }
+    },
+
+  },
+  etherscan: {
+    apiKey: process.env.API_KEY
+  },
+
+  sourcify: {
+    enabled: true
+  }
+
+};
+
+export default config;
+
+-- fazer o deploy
+npx hardhat run scripts/deploy.ts --network sepolia
+Deploy finished at 0xbf3239Ff42d5536CCA8d2ca61A648e8c7F3edA98
+Deploy finished at 0x812e16CDB3C3BfaC71d914D77A87bd89f57ac84e
+Deploy finished at 0x5E602648a00C884EbF951A860e964896539a8a8e
+Deploy finished at 0x42F39540a8a0Cc094B4499b50a4D5A6c834e3be6
+
+conferir em https://sepolia.etherscan.io/
+
+9. Verificar o contrato
+instalar um pacote para o hardhat comunicar com o etherscan
+npm i -D @nomiclabs/hardhat-etherscan
+
+npx hardhat verify --network sepolia 0xbf3239Ff42d5536CCA8d2ca61A648e8c7F3edA98
+npx hardhat verify --network sepolia 0x812e16CDB3C3BfaC71d914D77A87bd89f57ac84e
+npx hardhat verify --network sepolia 0x5E602648a00C884EbF951A860e964896539a8a8e
+npx hardhat verify --network sepolia 0x42F39540a8a0Cc094B4499b50a4D5A6c834e3be6 
+------------------
+dapp-book-database
+------------------
+1. npx create-react-app dapp --template typescript
+cd dapp 
+npm start
+
+2. criar padrao de pastas
+pages/Login/index.tsx
+import './styles.css';
+export default function Login() {
+  return (
+    <div className="container">
+      login
+    </div>
+  )
+}
+
+pages/Login/styles.css
+.content {
+  width: 100%;
+  height: 100%;
+}
+ 
+3. para conexao com a metamask
+npm i web3
+
+4. criar pasta src/pages/Services
+ABI.json
+Web3Service.ts
+
+npm i dotenv
+
+5. npm i react-router-dom
+criar src/router.tsx
+
+6. npm install typescript@3.2
