@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { doLogin, addBook } from './Services/Web3Service';
+import { doLogin, addBook, getBook } from './Services/Web3Service';
 
 import './App.css';
 
@@ -9,7 +9,8 @@ function App() {
   const [user,setUser] = useState("");
   const [title,setTitle] = useState(''); 
   const [year,setYear] = useState(''); 
-
+  const [id,setId] = useState(''); 
+  
   function onBtnLogin() {
 
     doLogin()
@@ -27,6 +28,17 @@ function App() {
     addBook(title,year)
         .then(result => {
             alert("Livro cadastrado.")
+        })
+        .catch(err => {
+            console.error(err);
+        })
+  }
+
+  function psqBook() {
+
+    getBook(id)
+        .then(result => {
+            alert("Livro encontrado.")
         })
         .catch(err => {
             console.error(err);
@@ -83,7 +95,34 @@ function App() {
 
         </div>
 
-      </div>      
+      </div>     
+
+
+      <div className="content">
+      
+        <div className="label">
+          Pesquisar Livro:
+        </div>
+
+        <div className="box1">
+
+          <text>Numero do Livro</text>
+          <input
+            value={id}    
+            onChange={e => setId(e.target.value)}
+          />  
+
+        </div>
+
+        <div className="box3">
+
+          <button className="buttongetbook"
+                onClick={psqBook}
+          >Pesquisar</button>
+
+        </div>
+
+      </div>: 
 
     </div>
   );

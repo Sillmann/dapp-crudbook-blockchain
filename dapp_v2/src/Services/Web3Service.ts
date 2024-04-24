@@ -34,3 +34,21 @@ export async function addBook(title,year) {
   return contract.methods.addBook({title,year}).send();
 }
 
+// export async function getBook(id) {
+
+//   const contract = getContract();
+//   console.log(contract.methods.books[id]);
+//   return contract.methods.books[id];
+
+// }
+
+export type Book = {
+  title: string;
+  year: string 
+}
+
+export async function getBook(id:string): Promise<Book> {
+  const contract = getContract();
+  return contract.methods.books[id] as Promise<Book>;
+}
+
