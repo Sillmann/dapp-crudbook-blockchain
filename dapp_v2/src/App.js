@@ -38,7 +38,9 @@ function App() {
 
     getBook(id)
         .then(result => {
-            alert("Livro encontrado.")
+            // alert("Livro encontrado." + result.title);
+            setTitle(result.title);
+            setYear(parseInt(result.year));
         })
         .catch(err => {
             console.error(err);
