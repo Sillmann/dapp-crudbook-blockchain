@@ -106,3 +106,57 @@
 .buttonbook:hover {
   filter: brightness(70%);
 }
+
+.main {
+  background-color: black;
+  color: white;
+  height: 100vh;
+}
+
+.main h1 {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-left: 6px;
+}
+
+.main ul {
+  display: grid;
+  column-gap: 50px;
+  list-style: none;
+  font-size: 18px;
+}
+
+.main ul li {
+  padding: 2px;
+}
+
+.main ul li {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+  gap: 6px;
+  margin-left: 6px;
+}
+
+
+.cabecalho {
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+  gap: 6px;
+  margin-left: 6px;
+}
+
+.title {
+  background-color: burlywood;
+  width: 320px;
+}
+
+.year {
+  background-color: red;
+  width: 320px;
+  text-align: left;
+}

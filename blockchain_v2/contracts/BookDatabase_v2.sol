@@ -8,9 +8,9 @@ contract BookDatabase_v2 {
         uint16 year;
     }
 
-    uint32 private nextId = 0;
-    mapping(uint32 => Book) public books;
-    uint256 public count;
+    uint private nextId = 0;
+    mapping(uint => Book) public books;
+    uint public count;
 
     function compare(string memory str1, string memory str2)
             private
@@ -28,7 +28,7 @@ contract BookDatabase_v2 {
         count++;
     }
 
-    function editBook(uint32 id, Book memory newBook) public {
+    function editBook(uint id, Book memory newBook) public {
         Book memory oldBook = books[id];
 
         if ( !compare(oldBook.title, newBook.title) &&
@@ -40,10 +40,18 @@ contract BookDatabase_v2 {
           books[id].year = newBook.year;
     }
 
-    function removeBook(uint32 id) public {
+    function removeBook(uint id) public {
         if(books[id].year > 0){
           delete books[id];
           count--;
         }
     }
+
+    function listBooks() public view returns (Book[] memory) {
+        Book[] memory bookList = new Book[](10);
+        for (uint i = 1; i <= nextId; i++) {
+            bookList[i - 1] = books[i];
+        }
+        return bookList;
+}
 }

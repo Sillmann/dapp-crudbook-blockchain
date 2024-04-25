@@ -1,7 +1,7 @@
 import Web3 from "web3";
 import ABI from "./ABI.json";
 
-const CONTRACT_ADDRESS = "0x61447246818Fc3946B77955465cB99795F5f32a6";
+const CONTRACT_ADDRESS = "0x8BCFa264b93fe053ee2FDb06376f2ac3da31c025";
 
 export async function doLogin() {
 
@@ -38,6 +38,14 @@ export async function getBook(id) {
 
   const contract = getContract();
   return contract.methods.books(id).call();
+
+}
+
+export async function getListBooks() {
+
+  const contract = getContract();
+  const books = await contract.methods.listBooks().call();
+  return books.map(t => { return { ...t } }).filter(t => t.text !== "");
 
 }
 
